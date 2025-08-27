@@ -10,6 +10,7 @@ document.getElementById('loginBtn').addEventListener('click', function (event) {
     }
     else {
         alert("invalid credentials")
+        
     }
 
 })
