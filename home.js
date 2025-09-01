@@ -1,3 +1,8 @@
+
+document.getElementById("logout").addEventListener("click", function(e){
+    e.preventDefault();
+    window.location.href = "login.html"
+})
 function getConvertedInput(id) {
     return parseFloat(document.getElementById(id).value);
 }
@@ -66,6 +71,9 @@ document.getElementById('cashOut').addEventListener('click', function (e) {
     if (!pinValidation(1)) {
         return (window.alert("Invalid Pin"))
     }
+    if (initialAmount<1 || initialAmount<withdrawAmount){
+        return (window.alert("Insufficient Balance"))
+    }
     let newInitialAmount = initialAmount - withdrawAmount;
     document.getElementById("initial-amount").innerText = newInitialAmount;
     historyFromButton(this)
@@ -87,6 +95,9 @@ document.getElementById('transfer').addEventListener('click', function (e) {
     }
     if (!pinValidation(2)) {
         return (window.alert("Invalid Pin"))
+    }
+     if (initialAmount<1 || initialAmount<amountSend){
+        return (window.alert("Insufficient Balance"))
     }
     let newInitialAmount = initialAmount - amountSend;
     document.getElementById("initial-amount").innerText = newInitialAmount;
@@ -122,6 +133,9 @@ document.getElementById('payment').addEventListener('click', function (e) {
     }
     if (document.getElementById("pin").value !== "2310") {
         return (window.alert("Invalid pin"))
+    }
+     if (initialAmount<1 || initialAmount<amountPay){
+        return (window.alert("Insufficient Balance"))
     }
 
     let newInitialAmount = initialAmount-amountPay;
