@@ -11,13 +11,13 @@
      <!-- font awesome cdn -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body class="bg-[#f4f5f7] h-[100vh]">
+<body class="bg-[#f4f5f7] min-h-[900px]">
     <header class="bg-white rounded-b-3xl pb-3" >
         <nav class="border-b-1 border-gray-200 min-h-[50px] max-w-lg mx-auto flex justify-between items-center p-4">
             <div class="flex items-center">
                 <img class="h-[50px]" src="assets/Group.png" alt="">
                 <div class="ml-3">
-                    <h2 class="font-semibold">$<span>45000</span></h2>
+                    <h2 class="font-semibold">$<span id="initial-amount">45000</span></h2>
                     <p class="text-[#08080880]">Available Balance</p>
                 </div>
             </div>
@@ -31,42 +31,42 @@
         </div>
     
         <section class="grid grid-cols-3 max-w-lg mx-auto gap-4 p-4">
-        <div class="border-1 border-gray-300 rounded-lg">
+        <div id="addMoney" class="border-1 border-gray-300 rounded-lg functionButtons">
             <div class="text-center p-3 py-4 ">
                 <img class="mx-auto" src="assets/wallet1.png" alt="">
                 <h2 class="mt-2 text-sm">Add Money</h2>
             </div>
         </div>
 
-        <div class="border-1 border-gray-300 rounded-lg">
+        <div class="border-1 border-gray-300 rounded-lg functionButtons">
             <div class="text-center p-3 py-4 ">
                 <img class="mx-auto" src="assets/send1.png" alt="">
                 <h2 class="mt-2 text-sm">Cashout</h2>
             </div>
         </div>
 
-        <div class="border-1 border-gray-300 rounded-lg">
+        <div class="border-1 border-gray-300 rounded-lg functionButtons">
             <div class="text-center p-3 py-4">
                 <img class="mx-auto" src="assets/money1.png" alt="">
                 <h2 class="mt-2 text-sm">Transfer Money</h2>
             </div>
         </div>
 
-        <div class="border-1 border-gray-300 rounded-lg">
+        <div class="border-1 border-gray-300 rounded-lg functionButtons">
             <div class="text-center p-3 py-4 ">
                 <img class="mx-auto" src="assets/bonus1.png" alt="">
                 <h2 class="mt-2 text-sm">Get Bonus</h2>
             </div>
         </div>
 
-        <div class="border-1 border-gray-300 rounded-lg">
+        <div class="border-1 border-gray-300 rounded-lg functionButtons">
             <div class="text-center p-3 py-4 ">
                 <img class="mx-auto" src="assets/purse1.png" alt="">
                 <h2 class="mt-2 text-sm">Pay Bill</h2>
             </div>
         </div>
 
-        <div class="border-1 border-gray-300 rounded-lg">
+        <div class="border-1 border-gray-300 rounded-lg functionButtons">
             <div class="text-center p-3 py-4 ">
                 <img class="mx-auto" src="assets/transaction1.png" alt="">
                 <h2 class="mt-2 text-sm">Transactions</h2>
@@ -74,6 +74,158 @@
         </div>
     </section>
     </header>
+    <main class="max-w-lg mx-auto p-4">
+        <!-- add money -->
+        <section id="addMoneySection" style="display:none" class="actions">
+            <h1 class="font-bold mt-5">Add Money</h1>
+        <form class="bg-white rounded-3xl p-8 mx-auto mt-4" action="">
+                <div class="">
+                    
+                    <label class="text-sm font-semibold" for="">Select A Bank</label>
+                    <input id="bankType" type="text" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl" placeholder="Select Bank" list="banks" />
+                        <datalist id="banks">
+                            <option value="BRAC Bank PLC"></option>
+                            <option value="Dhaka Bank PLC"></option>
+                            <option value="Eastern Bank PLC"></option>
+                            <option value="IFIC Bank PLC"></option>
+                            <option value="Pubali Bank Limited"></option>
+                        </datalist>
+                </div>
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold">Bank Account Number</label><br>
+            <input id="accountNumber" type="text"  placeholder="Enter 11 digit account number" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold" >Amount to Add</label><br>
+            <input type="text" id="amount-add" placeholder="Add Amount" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        
+        <div class="mt-5">
+            <label class="text-sm font-semibold" for="">Pin Number</label><br>
+            <input type="text"  placeholder="Enter 4 Digit Pin number" class="pin input w-full bg-[#f4f5f7] mt-1 rounded-3xl" />
+        </div>
+        <button id="add-money" class="btn py-6 text-lg bg-[#0874f2] mt-5 w-full rounded-3xl text-white">Add Money</button>
+    </form>
 
+        </section>
+
+        <!-- cash out -->
+        <section style="display:none" class="actions">
+            <h1 class="font-bold mt-5">Cash Out</h1>
+        <form class="bg-white rounded-3xl p-8 mx-auto mt-4" action="">
+                
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold">Agent Number</label><br>
+            <input id="agentNumber" type="text"  placeholder="Enter 11 digit number" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold" >Amount</label><br>
+            <input type="text" id="amount-withdraw" placeholder="Enter amount to withdraw" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        
+        <div class="mt-5">
+            <label class="text-sm font-semibold" for="">Pin Number</label><br>
+            <input type="text" placeholder="Enter 4 Digit Pin number" class="pin input w-full bg-[#f4f5f7] mt-1 rounded-3xl" />
+        </div>
+        <button id="cashOut" class="btn py-6 text-lg bg-[#0874f2] mt-5 w-full rounded-3xl text-white">Withdraw Money</button>
+    </form>
+
+        </section>
+        
+        <!-- transfer money -->
+    <section style="display:none" class="actions">
+            <h1 class="font-bold mt-5">Transfer Money</h1>
+        <form class="bg-white rounded-3xl p-8 mx-auto mt-4" action="">
+               
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold">User Account Number</label><br>
+            <input id="recivingAccount" type="text"  placeholder="Enter 11 digit number" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold" >Amount</label><br>
+            <input type="text" id="amountSend" placeholder="Enter amount to transfer" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        
+        <div class="mt-5">
+            <label class="text-sm font-semibold" for="">Pin Number</label><br>
+            <input type="text" placeholder="Enter 4 Digit Pin number" class="pin input w-full bg-[#f4f5f7] mt-1 rounded-3xl" />
+        </div>
+        <button id="transfer" class="btn py-6 text-lg bg-[#0874f2] mt-5 w-full rounded-3xl text-white">Transfer amount</button>
+    </form>
+
+        </section>
+
+
+        <!-- get bonus -->
+
+    <section style="display:none" class="actions">
+            <h1 class="font-bold mt-5">Get Bonus</h1>
+        <form class="bg-white rounded-3xl p-8 mx-auto mt-4" action="">
+               
+                
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold">Enter Bonus Coupon</label><br>
+            <input id="bonusCoupon" type="text"  placeholder="Enter your coupon" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+
+         <button id="GetBonus" class="btn py-6 text-lg bg-[#0874f2] mt-5 w-full rounded-3xl text-white">Get Bonus</button>
+    </form>
+        
+        
+        
+        </section>
+
+
+        <!-- pay bil -->
+    <section style="display:none" class="actions">
+            <h1 class="font-bold mt-5">Pay bill</h1>
+        <form class="bg-white rounded-3xl p-8 mx-auto mt-4" action="">
+                <div class="">
+                    
+                    <label class="text-sm font-semibold" for="">Select To Pay</label>
+                    <input id="billType" type="text" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl" placeholder="Select bill type" list="bills" />
+                        <datalist id="bills">
+                            <option value="Electricity"></option>
+                            <option value="Internet"></option>
+                            <option value="EMI"></option>
+                            <option value="Loan instalment"></option>
+                            
+                        </datalist>
+                </div>
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold">Biller Account Number</label><br>
+            <input id="billerAccount" type="text"  placeholder="Enter account number" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        <div class="mt-5">
+            <label  for="" class="text-sm font-semibold" >Amount to pay</label><br>
+            <input type="text" id="amountPay" placeholder="Add Amount to pay" class="input w-full bg-[#f4f5f7] mt-1 rounded-3xl " />
+        </div>
+        
+        <div class="mt-5">
+            <label class="text-sm font-semibold" for="">Pin Number</label><br>
+            <input type="text" id="pin"  placeholder="Enter 4 Digit Pin number" class="pin input w-full bg-[#f4f5f7] mt-1 rounded-3xl" />
+        </div>
+        <button id="payment" class="btn py-6 text-lg bg-[#0874f2] mt-5 w-full rounded-3xl text-white">Pay Now</button>
+    </form>
+
+        </section>
+
+
+        <section id="transactions" style="display:block" class="actions ">
+            <h1 class="font-bold mt-5">Transactions</h1>
+                <div class=" rounded-lg">
+                    
+                    
+                    <div id="entry" class="flex flex-col gap-2">
+
+                        
+                    </div>
+                </div>
+        </section>
+     
+
+
+    </main>
+<script src="home.js"></script>
 </body>
 </html>
